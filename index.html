@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dla Najważniejszej Osoby ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff6b8a, #ff8fb1);
+  overflow-x: hidden;
+  color: white;
+  text-align: center;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+  padding: 20px;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+p {
+  max-width: 700px;
+  font-size: 1.3rem;
+}
+
+button {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: white;
+  color: #ff4e7a;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(255,255,255,1);
+}
+
+.heart {
+  position: fixed;
+  color: rgba(255,255,255,0.8);
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="section">
+  <h1>Cześć Piękna ❤️</h1>
+  <p>Uwaga. Ta strona zawiera nadmiar miłości i lekką dawkę głupotek 😌</p>
+  <button onclick="startExperience()">Kliknij mnie</button>
+</div>
+
+<div class="section">
+  <h1>Powody, dla których Cię kocham</h1>
+  <p>
+  1. Twój uśmiech rozwala mi system.<br>
+  2. Masz talent do bycia idealną.<br>
+  3. Przy Tobie nawet poniedziałek nie jest taki zły.
+  </p>
+</div>
+
+<div class="section">
+  <h1>Diagnoza</h1>
+  <p>
+  Objawy: ciągłe myślenie o Tobie.<br>
+  Skutek uboczny: zakochanie 300%.<br>
+  Leczenie: więcej Ciebie.
+  </p>
+</div>
+
+<div class="section">
+  <h1>Kocham Cię</h1>
+  <p>I to tak poważnie. Nawet jak zabierasz mi kołdrę 😄</p>
+</div>
+
+<audio id="loveMusic">
+  <!-- WSTAW SWOJĄ PIOSENKĘ -->
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const sections = document.querySelectorAll('.section');
+let current = 0;
+
+function showSection(index) {
+  sections[index].classList.add('show');
+}
+
+function startExperience() {
+  document.getElementById("loveMusic").play();
+  nextSection();
+}
+
+function nextSection() {
+  if (current < sections.length - 1) {
+    current++;
+    showSection(current);
+    sections[current].scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+showSection(0);
+
+// unoszące się serca
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.innerHTML = "❤️";
+  heart.style.fontSize = Math.random() * 20 + 20 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
